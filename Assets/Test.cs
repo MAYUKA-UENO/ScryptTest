@@ -2,43 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class Boss
 {
+    int mp = 53; //マジックポイントを53で初期化する
+    int Magicloss = 5; // 魔法消費を5で初期化する
 
-    //Use this for initialization
-    void Start()
+        
+    // 魔法攻撃用の関数
+    public void Magicattack()
+
     {
-
-        //【課題】要素の個数が5の、int型の配列arrayを宣言して好きな値で初期化してください
-        int[] array = new int[5];
-
-        //代入する
-        array[0] = 1;
-        array[1] = 2;
-        array[2] = 3;
-        array[3] = 4;
-        array[4] = 5;
-
-
-        //【課題①】for文を使い、配列の各要素の値を順番に表示してください
-        for (int i = 0; i < 5; i++)
+        if (mp >= 5) //MPが5以上ある場合
 
         {
-            Debug.Log(array[i]);
+
+            Debug.Log("魔法攻撃をした。残りMPは" + this.mp);
+            this.mp -= Magicloss;　//MPを5減らす
+
         }
-
-        //【課題②】for文を使い、配列の各要素の値を逆順に表示してください
-        for (int i = 4; i>=0; i--)
-
+        else　//MPが5未満で足りない場合
         {
-            Debug.Log(array[i]);
+
+            Debug.Log("MPが足りないため、魔法が使えない。");
         }
 
     }
-        // Update is called once per frame
-        void Update()
-        {
+
+}　//↑↑↑ここまでがBossクラス↑↑↑
+
+public class Test : MonoBehaviour
+{
+    void Start()
+
+    {
+
+        // Bossクラスの変動を宣言してインスタンスを代入
+        Boss lastboss = new Boss();
+
+        for (int i = 0; i <= 10; i++)
+
+        { 
+            //魔法攻撃用の関数を呼び出す
+            lastboss.Magicattack();
         }
 
+    }
 
+    //Update is called once per frame
+    void Update ()
+    {
+
+    }
 }
