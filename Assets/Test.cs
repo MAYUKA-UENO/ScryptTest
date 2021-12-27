@@ -12,12 +12,11 @@ public class Boss
     public void Magicattack()
 
     {
-        if (mp >= 5) //MPが5以上ある場合
+        if (mp > 5) //MPが5以上ある場合
 
         {
-
-            Debug.Log("魔法攻撃をした。残りMPは" + this.mp);
             this.mp -= Magicloss;　//MPを5減らす
+            Debug.Log("魔法攻撃をした。残りMPは" + this.mp);
 
         }
         else　//MPが5未満で足りない場合
